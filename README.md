@@ -1,200 +1,279 @@
-# Crazy Knight Line — Generative Art
+# Crazy Knight Line
 
-[![Live Demo](https://img.shields.io/badge/demo-live-green?style=for-the-badge)](https://reyrove.github.io/Crazy-Knight-Line-Generative-Art)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+**A seed-based generative system for gradient-traced knight's-tour lines.**
 
-> **Generative knight's tour art.** Each refresh creates a unique path of a knight's journey across a grid, drawing elegant lines with a beautiful HSB cyan-to-white gradient.
-
-## 🎨 Live Demo
-
-<div align="center">
-  <a href="https://reyrove.github.io/Crazy-Knight-Line-Generative-Art" target="_blank">
-    <img src="demo-screenshot.jpg" alt="Crazy Knight Line Website Demo" width="800" style="border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);"/>
-  </a>
-  <br><br>
-  <a href="https://reyrove.github.io/Crazy-Knight-Line-Generative-Art" target="_blank">
-    <img src="https://img.shields.io/badge/🌐_View_Live_Demo-0a0a0a?style=for-the-badge&logo=githubpages&logoColor=white&color=c9a84c" alt="View Live Demo" width="300"/>
-  </a>
-  <br>
-  <em>Click the image or button to experience the generative art</em>
-</div>
-
-## 👕 Apparel Preview
-
-<div align="center">
-  <img src="Crazy-Knight-Line.jpg" alt="Crazy Knight Line on T-Shirt" width="600" style="border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.3);"/>
-  <br>
-  <em>Crazy Knight Line artwork printed on a T-shirt</em>
-</div>
-
-## ✨ Features
-
-- **Knight's Tour** — Random knight moves across a grid
-- **Grid-Based** — 5×5 to 305×305 grid size
-- **HSB Gradient** — Beautiful cyan-to-white color transition
-- **Random Path** — Unique path every refresh
-- **Seed-Based** — Every composition is unique and reproducible via its seed
-- **Save & Share** — Download as PNG with seed in filename
-- **Apparel Mode** — Preview artwork on a T-shirt mockup
-- **Responsive** — Works on desktop, tablet, and mobile
-- **Pure JavaScript** — No external dependencies
-- **Keyboard Shortcuts**:
-  - `R` — Regenerate
-  - `S` — Save image
-  - `T` — Toggle apparel view
-
-## 🎨 Artwork Details
-
-| Parameter | Range | Description |
-|-----------|-------|-------------|
-| **Grid Size** | 5×5 to 305×305 | Mosaic grid dimensions |
-| **Step Size 1** | 1 to grid/9 | First knight move step |
-| **Step Size 2** | 0 to step1 | Second knight move step |
-| **Total Steps** | 10 to grid cells | Number of moves |
-| **Start Position** | Random | Starting point on grid |
-| **Color Gradient** | Cyan → White | HSB smooth color transition |
-
-## 🎯 How Knight Moves Work
-
-A knight moves in an "L" shape:
-- Two steps in one direction, then one step perpendicular
-- Or one step in one direction, then two steps perpendicular
-
-This creates beautiful, intricate path patterns across the grid.
-
-## 🎨 Color Gradient
-
-The artwork uses an HSB (Hue, Saturation, Brightness) color gradient:
-- **Start**: Cyan (Hue=180°, Saturation=100%, Lightness=50%)
-- **End**: White (Hue=0°, Saturation=0%, Lightness=100%)
-- **Interpolation**: Smooth transition creating a vibrant cyan-to-white fade
-
-## 🚀 Quick Start
-
-### Local Development
-
-```bash
-# Clone the repository
-git clone https://github.com/reyrove/Crazy-Knight-Line-Generative-Art.git
-
-# Navigate to the directory
-cd Crazy-Knight-Line-Generative-Art
-
-# Open in browser
-open index.html
-# or use a live server
-```
-
-### Deploy to GitHub Pages
-
-1. Push to GitHub
-2. Go to Settings → Pages
-3. Select branch `main` and root folder
-4. Your site will be live at `https://reyrove.github.io/Crazy-Knight-Line-Generative-Art`
-
-## 🧠 How It Works
-
-The artwork is generated using a deterministic random number generator, seeded by timestamp + random noise. Every refresh:
-
-1. **Setup**:
-   - Random grid size (5-305)
-   - Random step sizes (s1, s2) for knight moves
-   - Random starting position
-   - Random number of steps
-
-2. **Knight's Path**:
-   - Start at random position on grid
-   - Each step moves in an L-shape (knight move)
-   - Step sizes (s1, s2) determine the L-shape dimensions
-   - Path continues until steps run out or no valid moves remain
-
-3. **Rendering**:
-   - White background
-   - Each segment drawn as a line
-   - Color gradient from cyan to white using HSB interpolation
-   - Line width scales with canvas size
-
-## 📁 File Structure
-
-```
-Crazy-Knight-Line-Generative-Art/
-├── index.html              # Main application (all-in-one)
-├── Crazy-Knight-Line.jpg   # T-shirt mockup image
-├── fav.svg                 # Favicon
-├── demo-screenshot.jpg     # Website demo screenshot
-├── README.md               # This file
-└── LICENSE                 # MIT License
-```
-
-## 🛠️ Tech Stack
-
-- **Pure Vanilla HTML/CSS/JS** — No dependencies
-- **Canvas API** — 2D rendering
-- **HSL Color Model** — HSB-style gradient
-- **CSS Flexbox/Grid** — Responsive layout
-- **GitHub Pages** — Hosting
-
-## 🎯 Interactive Controls
-
-| Action | Keyboard | Button |
-|--------|----------|--------|
-| Regenerate | `R` | Click "regenerate" |
-| Save Image | `S` | Click "regenerate" |
-| Toggle Apparel | `T` | Click "apparel" |
-
-## 🎨 The Creative Process
-
-### Knight's Tour
-The knight's tour is a classic chess problem where a knight visits every square on a board exactly once. This artwork takes inspiration from that concept, creating unique paths with random step sizes and directions.
-
-### Step Sizes
-The knight uses two step sizes (s1, s2):
-- If s1=2 and s2=1, it's a standard chess knight move
-- If s1=3 and s2=2, it's a larger knight-like move
-- Random values create unique patterns
-
-### HSB Color Gradient
-Unlike RGB interpolation, HSB (Hue, Saturation, Brightness) interpolation creates a more vibrant and visually pleasing transition:
-- The hue shifts from cyan (180°) to white
-- Saturation fades from 100% to 0%
-- Brightness increases from 50% to 100%
-
-### Grid Scale
-The grid size varies randomly, creating either dense, intricate patterns (large grids) or sparse, elegant designs (small grids).
-
-## 📱 Responsive Design
-
-The application automatically adapts to:
-- Desktop screens
-- Tablets
-- Mobile phones
-- Landscape orientation
-- Various aspect ratios
-
-## 🤝 Contributing
-
-Contributions are welcome! Feel free to:
-- Fork the repository
-- Create a feature branch
-- Submit a pull request
-
-### Ideas for Contributions:
-- New color palettes
-- Additional movement patterns
-- Animation features
-- Interactive controls
-- Performance optimizations
-
-## 📄 License
-
-MIT License — see [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- Inspired by the knight's tour problem
-- Pure JavaScript implementation
-- Special thanks to the creative coding community
+A catalogue of computational textile compositions for fashion, textile and surface design — algorithmically drawn, seed-documented, and ready for production.
 
 ---
 
-**Built with ❤️ and crazy knight moves**
+## Overview
+
+Crazy Knight Line is a generative design system rather than a single artwork. Each composition is built from a random walk in the shape of a knight's move — one step forward, two sideways, or vice versa — traced across a rectangle as straight segments, each coloured along a gradient from cyan to white.
+
+The system is designed for:
+
+- **Fashion houses** adapting path-based ornament for apparel and accessories
+- **Textile studios** developing repeat patterns and yardage
+- **Surface designers** working across print, wallpaper, and interior applications
+
+Every composition can be licensed, adapted, or commissioned to a brief.
+
+---
+
+## Concept
+
+A line, when it is *graded* rather than drawn, becomes a weather — cyan to white, quiet, yours.
+
+The traced line — irregular, rule-bound, endlessly variable — has always carried meaning. From drafting tables to textile pattern lines, the continuous stroke is one of the oldest forms of drawn computation we have. Crazy Knight Line translates that structure into code. Each composition begins with a starting cell and unfolds through a chain of knight's moves until the path exhausts itself or the step limit is reached — then each segment is coloured along a gradient that reads as a quiet weather across the line.
+
+The grid size, the two step lengths, the total number of moves, and the starting position are all derived from a single numeric seed.
+
+Like the other still volumes in this series (Girih, Arachne, Celestial Grove, ChaotiColor, Citrus Mosaic, Crazy Knight Curve), **Crazy Knight Line is a static composition.** The plate, the framed plate, the surfaces, and the archive are all static frames. A traced line is something you read; its character is stillness, not motion.
+
+---
+
+## Features
+
+- **Seed-based generation** — every composition is defined by a numeric seed and can be regenerated exactly
+- **Deterministic output** — the same seed always produces the same composition
+- **Knight's-move walk** — randomized (s1, s2) step lengths, bounded to a rectangular grid
+- **Cyan-to-white gradient** — the line fades from a bright cyan at the start to white at the end, drawn segment by segment in HSL space
+- **Straight segments** — the raw walk is drawn as-is, without smoothing, giving the composition its "drawn" character
+- **Adaptive grid** — 5 to 305 divisions per axis, independent on x and y
+- **Adaptive surfaces** — one seed applied across print, scarf, textile, and wall formats
+- **Archive** — eight curated seeds available for immediate loading
+- **Download** — export the composition as a high-resolution PNG
+- **Keyboard shortcuts** — `R` for new seed, `S` to save
+
+---
+
+## Project Structure
+
+```
+.
+├── index.html          # Main catalogue page
+├── images/
+│   ├── fav.svg         # Favicon
+│   ├── tote.png        # Mockup: tote bag
+│   ├── tee.png         # Mockup: t-shirt
+│   └── cushion.png     # Mockup: cushion
+└── README.md
+```
+
+---
+
+## How It Works
+
+### The Seed
+
+A numeric seed (a large integer) initializes a deterministic pseudo-random generator. From this seed, the system derives:
+
+- Grid columns (5–305)
+- Grid rows (5–305)
+- Step length s1 (the longer leg of the knight's move)
+- Step length s2 (the shorter leg, always ≤ s1)
+- Total number of moves (10 to a few thousand)
+- Starting cell (x, y)
+
+Because the generator is deterministic, the same seed always produces the same composition — on any device, at any time.
+
+### The Knight's Move
+
+The knight's move is the classic chess leap: **one step in one direction, two steps in the other** — or vice versa. From any cell, there are up to eight possible knight moves:
+
+```
+      ○     ○
+        ╲ ╱
+    ○ ── ● ── ○
+        ╱ ╲
+      ○     ○
+```
+
+At each step of the walk, the system:
+
+1. Computes all eight candidate positions from the current cell.
+2. Filters to those inside the grid bounds.
+3. Picks one at random.
+4. If no valid moves remain, the walk ends early.
+
+Unlike Crazy Knight Curve, **the path is drawn as straight segments** — no smoothing, no spline. Each move is a single line from cell to cell, giving the composition its "sketched" character.
+
+### The Gradient
+
+Each segment of the walk is coloured according to its position along the path, from start to end:
+
+| Position     | Hue          | Saturation | Lightness | Visual      |
+|--------------|--------------|------------|-----------|-------------|
+| Start (t=0)  | 180° (cyan)  | 100%       | 50%       | Bright cyan |
+| Middle       | ~90°         | 50%        | 75%       | Pale blue   |
+| End (t=1)    | 0° (no hue)  | 0%         | 100%      | Pure white  |
+
+The result is a line that **fades from cyan to white** across its length. Because each segment is drawn individually in its own colour, the gradient reads as a continuous wash — quiet, uninterrupted, weather-like.
+
+### The Grid
+
+The grid division count is derived from the seed, between 5 and 305 on each axis, and — unlike some earlier volumes — **columns and rows are independent**. This means compositions may be square, portrait, or landscape, depending on the seed.
+
+The path is drawn on the **inner 90%** of the canvas (a 9/10 scale factor), so the composition always has a small margin — like a plate on a page.
+
+### The Surfaces
+
+The same seed is rendered across four surface formats. These are static frames — they represent the print-ready composition.
+
+| Surface  | Aspect | Material          |
+|----------|--------|-------------------|
+| Print    | 1 : 1  | Cotton rag        |
+| Scarf    | 3 : 1  | Twill silk        |
+| Textile  | 4 : 3  | Fabric yardage    |
+| Wall     | 2 : 3  | Wallpaper         |
+
+Each surface uses the same underlying seed and structural logic — only the repeat, orientation, and scale change.
+
+### Stillness
+
+Like Girih, Arachne, Celestial Grove, ChaotiColor, Citrus Mosaic, and Crazy Knight Curve, Crazy Knight Line does not animate. The plate is a single frozen frame — the composition is complete the moment it is generated.
+
+This is a deliberate design choice. A traced line is not a swarm. It is not a rotation. It is a single stroke, drawn once and left. Its stillness is what makes it print-ready in the strictest sense: what you see is what you get.
+
+---
+
+## Usage
+
+### In the browser
+
+1. Open `index.html` in any modern browser.
+2. Click **New Seed** to generate a new composition.
+3. Click **Download** to save the composition as a PNG.
+4. Scroll to the **Archive** section and click any plate to load it into Plate 001.
+
+### Keyboard shortcuts
+
+| Key | Action          |
+|-----|-----------------|
+| `R` | New seed        |
+| `S` | Save as PNG     |
+
+### Reproducing a composition
+
+Each composition is identified by an 8-digit seed label displayed in the metadata panel. To reproduce a specific composition, note the seed and regenerate it programmatically:
+
+```js
+const rng = new RandomGenerator(seed);
+const features = buildFeatures(rng);
+renderComposition(canvas, features, rng);
+```
+
+Because the generator is deterministic, this will produce the identical composition on any device.
+
+---
+
+## Technical Notes
+
+- **No build step.** The system is a single HTML file with inline CSS and JavaScript.
+- **No dependencies.** All drawing is done with the native Canvas 2D API.
+- **Deterministic.** The `RandomGenerator` class uses a xorshift-based PRNG seeded by an integer, so identical seeds produce identical outputs.
+- **Static rendering.** Every canvas renders a single frame. There is no animation loop.
+- **Feature isolation.** Cover, framed plate, surfaces, and archive thumbnails each derive their own feature set from their own local RNG, without disturbing the main plate's state.
+- **Bounded walk.** The knight's-move walk terminates cleanly when no valid moves remain, so no infinite loop is possible even at large grid sizes.
+- **Independent axis scaling.** Columns and rows are derived independently, so compositions can be square, portrait, or landscape.
+- **HSL gradient.** The line colour is computed in HSL space and converted to RGB with a small helper, so the cyan-to-white fade is smooth and even.
+- **Responsive.** The layout adapts from large desktop down to very small mobile devices (tested at 360px viewport width).
+- **Accessible.** Supports `prefers-reduced-motion`. Pinch-zoom is enabled.
+
+### Browser support
+
+Tested in current versions of:
+
+- Chrome / Edge
+- Firefox
+- Safari (desktop and iOS)
+
+---
+
+## Difference from Crazy Knight Curve
+
+Crazy Knight Line and Crazy Knight Curve share the same walk logic, but differ in two important ways:
+
+| Aspect      | Crazy Knight Curve        | Crazy Knight Line              |
+|-------------|---------------------------|--------------------------------|
+| Smoothing   | Catmull-Rom spline        | Straight segments (no smoothing) |
+| Colour      | Solid black on white      | Cyan → white gradient          |
+| Character   | Flowing, calligraphic     | Traced, weather-like           |
+| Grid        | Square (cols == rows)     | Independent cols and rows      |
+
+The result: Crazy Knight Curve reads as a single flowing path; Crazy Knight Line reads as a weather diagram — a slow fading line traced across a page.
+
+---
+
+## Licensing
+
+All Crazy Knight Line compositions are **seed-documented** and available for licensing across textile, surface, and print applications.
+
+- **Standard licenses** cover single-product production runs.
+- **Commercial use, custom editions, or exclusive rights** are available on request.
+
+Each license is issued against a specific seed ID. Regeneration of the same seed produces the identical composition — ensuring reproducibility between artist, studio, and manufacturer.
+
+For licensing enquiries: [reyhanehdaneshdoost@gmail.com](mailto:reyhanehdaneshdoost@gmail.com)
+
+---
+
+## Commission
+
+Crazy Knight Line is a generative design system, not a fixed artwork. It can be adapted for specific briefs:
+
+| Service     | Description                                                       |
+|-------------|-------------------------------------------------------------------|
+| Licensing   | Existing seeds from the archive, licensed for production use      |
+| Commission  | New compositions designed to your palette, repeat, and product    |
+| Systems     | A private generative tool built for your studio's ongoing use     |
+
+To begin a conversation: [reyhanehdaneshdoost@gmail.com](mailto:reyhanehdaneshdoost@gmail.com)
+
+---
+
+## Series
+
+Crazy Knight Line is part of a computational textile series. Each volume approaches ornament from a different structural angle:
+
+| Volume                | Structure                    | Motion                     |
+|-----------------------|------------------------------|----------------------------|
+| Girih 1               | Islamic geometric            | Static                     |
+| Arachne               | Rotating rings               | Static                     |
+| Baroque Me Baby       | Baroque frames               | Static                     |
+| Bezier 1              | Concentric curves            | Static                     |
+| Bezier 2              | Single rotating curve        | Animated (plate)           |
+| Brownian Graphe       | Graph networks               | Animated + interactive     |
+| Celestial Grove       | Recursive branch trees       | Static                     |
+| ChaotiColor           | Cellular automata            | Static                     |
+| Citrus Mosaic         | Arc-and-triangle tiles       | Static                     |
+| Crazy Knight Curve    | Knight's-tour smooth path    | Static                     |
+| **Crazy Knight Line** | **Knight's-tour gradient**   | **Static**                 |
+
+The series is designed as a coherent whole — same page structure, same seed logic, same licensing and commission terms — so that each volume can be presented individually or as part of a larger body of work.
+
+---
+
+## Credits
+
+- **Design & Generative System** — Reyhaneh Daneshdoost
+- **Typefaces** — Cormorant Garamond · DM Mono
+- **Platform** — Reyrove Studio
+- **Edition** — Crazy Knight Line, Autumn 2026
+
+### On AI tools
+
+Where technical obstacles were encountered, AI tools were used for debugging and code optimization. Every structural, aesthetic, and conceptual decision remained the artist's own.
+
+---
+
+## Links
+
+- Website — [reyrove.github.io](https://reyrove.github.io/)
+- Instagram — [@rey._.rove](https://www.instagram.com/rey._.rove/)
+- LinkedIn — [Reyhaneh Daneshdoost](https://www.linkedin.com/in/reyhaneh-daneshdoost-730481160/)
+- X — [@reyrove](https://x.com/reyrove)
+
+---
+
+© Crazy Knight Line · All compositions reproducible by seed · Computational Textile Design
